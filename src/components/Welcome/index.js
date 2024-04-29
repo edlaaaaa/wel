@@ -3,8 +3,11 @@ import './index.css'
 
 class Welcome extends Component {
   state = {isSubscribed: false}
+}
 
-  onSubscribed = () => {}
+  onSubscribed = () => {
+      this.setState(prevState=>({isSubscribed:!prevState.isSubscribed})
+      )}
 
   getButtonText = () => {
     const {isSubscribed} = this.state
@@ -13,14 +16,14 @@ class Welcome extends Component {
   }
 
   render() {
-    const {buttonText} = this.getButtonText()
+    const buttonText = this.getButtonText()
     return (
       <div className="welcome-container">
         <h1 className="heading">Welcome</h1>
         <p className="para">Thank you!Happy Learning</p>
 
         <div className="button-container">
-          <button className="subs-btn" type="button" onClick={this.onSubscribe}>
+          <button className="subs-btn" type="button" onClick={this.onSubscribed}>
             {buttonText}
           </button>
         </div>
